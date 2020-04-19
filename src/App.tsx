@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  function handleClick(e: any) {
+    console.log("before the breakpoint");
+    let newVar = e;
+    console.log("after the breakpoint");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +16,7 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={handleClick}>Try Me</button>>
       </header>
     </div>
   );
