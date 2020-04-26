@@ -1,23 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { getSpells } from './services/spell.service';
+import SpellItem from './components/spells/spell-item';
 
 function App() {
   function handleClick(e: any) {
-    console.log("before the breakpoint");
     let newVar = e;
-    console.log("after the breakpoint");
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <button onClick={handleClick}>Try Me</button>>
-      </header>
+    <div>
+      <h1>Spell App</h1>
+      { getSpells().map(spell => <SpellItem spell={ spell } />) }
     </div>
   );
 }
