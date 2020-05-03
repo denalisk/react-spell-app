@@ -1,5 +1,9 @@
 import Spell from "../models/spell.interface";
 
+export function addSavedSpell(spellId: number) {
+    
+}
+
 export function getSpells(): Spell[] {
     return [
         {
