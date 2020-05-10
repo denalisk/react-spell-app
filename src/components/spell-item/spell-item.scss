@@ -1,0 +1,47 @@
+@import '../../scss/variables'; 
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.minified-spell-element, .expanded-spell-element {
+    border-top: 1px solid $color-light;
+    border-bottom: 1px solid $color-light;
+    padding: 10px;
+}
+
+.minified-spell-element {
+    display: flex;
+    flex-flow: row nowrap;
+    & > div {
+        padding: 0 10px;
+        &:not(:last-child) {
+            border-right: 1px solid $color-dark;
+        }
+        &:nth-child(1) {
+            width: 80px;
+            min-width: 80px;
+        }
+        &:nth-child(2) {
+            width: 240px;
+        }
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.expanded-spell-element {
+    padding: 0 20px 10px;
+    & > * {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+.description {
+    background: $color-light;
+    margin: -5px;
+    padding: 5px;
+}

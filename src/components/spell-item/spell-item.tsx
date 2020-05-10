@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import logo from './logo.svg';
-import './spell-item.css';
+import './spell-item.scss';
 import Spell from '../../models/spell.interface';
 import { levelTextConvert, schoolLevelText } from '../../services/display-text.service';
 import { ISpellItem } from '../../models/prop-interfaces/spell-item.interface';
@@ -15,7 +15,7 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
 
     const buildClassTag = (spellClass: string) => {
         return (
-            <div>{spellClass}</div>
+            <div className="class-tag">{spellClass}</div>
         );
     }
 
@@ -23,7 +23,7 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
         if (!isExpanded) {
             return (
                 <div className="minified-spell-element" onClick={handleToggleIsExpanded}>
-                    <div className="level-text">
+                    <div>
                         <strong>{levelTextConvert(spell.level)}</strong>
                     </div>
                     <div>
@@ -48,6 +48,7 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
                     <SpellProperty value={spell.material} displayText="Materials" hasHtml={false} />
                     <SpellProperty value={spell.ritual} displayText="Ritual" hasHtml={false} />
                     <div className="description">
+                        <strong>Description:</strong>
                         <SpellProperty value={spell.description} displayText="" hasHtml={true} />
                         <SpellProperty value={spell.higherLevel} displayText="" hasHtml={true} />
                     </div>

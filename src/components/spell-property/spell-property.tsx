@@ -1,6 +1,6 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import { ISpellProperty } from "../../models/prop-interfaces/spell-property.interface";
-
+import './spell-property.scss';
 
 const SpellProperty = function ({ value, displayText, hasHtml }: ISpellProperty) {
     if (value == null) {

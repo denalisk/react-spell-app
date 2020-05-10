@@ -1,5 +1,5 @@
 export function levelTextConvert(level: number) {
-    if (level != 0 && !level) {
+    if (level !== 0 && !level) {
         return '' + level;
     }
 
