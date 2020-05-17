@@ -1,45 +1,49 @@
 import React, { Fragment, useState } from 'react';
 import './spell-filter.scss';
-import { ISpellFilter } from '../../models/prop-interfaces/spell-filter.interface';
+import { ISpellFilter, IFilterGroup, IFilterRow } from '../../models/prop-interfaces/spell-filter.interface';
 import { IFilterFacet } from '../../models/filter-facet.interface';
 import { ISelectTag } from '../../models/prop-interfaces/select-tag.interface';
 import { ISpellQuery } from '../../models/spell-query.interface';
-import useFilterManager from '../../hooks/use-filter-manager.hook';
+import useGlobalFilters from '../../hooks/global-filters.hook';
+import data from '../../data/filters.json'
 
 const SpellFilter = function ({ filterGroups }: ISpellFilter): JSX.Element | null {
-    const [spellFilters, addFilter, removeFilter] = useFilterManager()
+    const [spellFilters, addFilter, removeFilter] = useGlobalFilters();
 
     if (filterGroups == null) {
         return null;
     }
 
-
-
-    return (
-        <div>
-            
-        </div>
-    );
-}
-
-const FilterRow = function ({ filterGroup }: IFilterGroup): JSX.Element | null {
-    
-
-    return null;
-}
-
-const SelectTag = function ({ filter, selected, onTagClicked }: ISelectTag): JSX.Element | null {
-    const clickHandler = () => {
-        onTagClicked(!selected);
+    const toggleFilter = (filter: IFilterFacet) => {
+        console.log('Toggling filter: ', filter);
+        filter.selected = !filter.selected;
+        if (filter.selected) {
+            addFilter(filter);
+        } else {
+            removeFilter(filter);
+        }
     }
 
     return (
-        <div className={`select-tag${selected ? " highlight" : ""}`} onClick={clickHandler}>
-            { filter.displayName }
-        </div>
+        <Fragment>
+            {filterGroups.map(group => {
+                return group.filters.map(filter => {
+                    return (
+                        <div key={filter.propertyValue} className={`select-tag${filter.selected ? " highlight" : ""}`} onClick={() => toggleFilter(filter)}>
+                            {filter.displayName}
+                        </div>
+                    );
+                })
+            })}
+            {
+                spellFilters.map(filter => {
+                    return (
+                        <div key={filter.propertyValue}>{filter.displayName}</div>
+                    );
+                })
+            }
+        </Fragment>
     );
 }
-
-
  
 export default SpellFilter;

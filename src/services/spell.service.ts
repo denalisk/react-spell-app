@@ -1,5 +1,5 @@
 import Spell from "../models/spell.interface";
-import data from "../../data/spells.json";
+import data from "../data/spells.json";
 
 /**
  * always sort spells by level and then alphabetically

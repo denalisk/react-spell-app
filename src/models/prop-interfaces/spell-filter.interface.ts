@@ -1,10 +1,15 @@
 import { IFilterFacet } from "../filter-facet.interface";
 
 export interface ISpellFilter {
-    filterGroups: IFilterFacet[][],
-    onFiltersChanged(newFilters: IFilterFacet[][]): void
+    filterGroups: IFilterGroup[],
+}
+
+export interface IFilterRow {
+    filters: IFilterFacet[]
 }
 
 export interface IFilterGroup {
-    filterGroup: IFilterFacet[]
+    propertyName: string,
+    propertyDisplayName: string,
+    filters: IFilterFacet[]
 }

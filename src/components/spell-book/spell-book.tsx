@@ -7,17 +7,25 @@ import SearchBar from '../search-bar/search-bar';
 import useSpellFilter from '../../hooks/use-spell-filter.hook';
 import { ISpellQuery } from '../../models/spell-query.interface';
 import { IFilterFacet } from '../../models/filter-facet.interface';
-import useFilterManager from '../../hooks/use-filter-manager.hook';
+import SpellFilter from '../spell-filter/spell-filter';
+import { getFilterGroups } from '../../services/filter.service';
+import { IFilterGroup } from '../../models/prop-interfaces/spell-filter.interface';
 
 function SpellBook() {
     const [spells, setSpells] = useState<Spell[]>([]);
+    const [filterGroups, setFilterGroups] = useState<IFilterGroup[]>([]);
     const [spellQuery, setSpellQuery] = useState<ISpellQuery>({ filters: [], query: '' });
     const currentSpells = useSpellFilter(spellQuery, spells);
-
 
     useEffect(() => {
         getSpells().then(spells => {
             setSpells(spells);
+        })
+    }, []);
+
+    useEffect(() => {
+        getFilterGroups().then(filterGroups => {
+            setFilterGroups(filterGroups);
         })
     }, []);
 
@@ -37,12 +45,18 @@ function SpellBook() {
                 <SpellItem spell={spell} key={spell.id} />
             </div>
         </Fragment>
-    )
+    );
 
     return (
         <div>
             <h1>Tome</h1>
             <SearchBar onQueryChange={queryStringChangeHandler}></SearchBar>
+            <h1>First Filter Group</h1>
+            <SpellFilter filterGroups={filterGroups}></SpellFilter>
+            <hr/>
+            <hr/>
+            <h1>Second Filter Group</h1>
+            <SpellFilter filterGroups={filterGroups}></SpellFilter>
             {currentSpells.map(generateSpellItem)}
         </div>
     );
