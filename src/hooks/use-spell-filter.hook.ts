@@ -14,12 +14,12 @@ export default function useSpellFilter(spellQuery: ISpellQuery, spells: Spell[])
     useEffect(() => {
         if (spellQuery.query) {
             // If there is a search query, we just search through the spells for it
-            // there just aren't enough spells to merit a filtered, queried search
-            setFilteredSpells(searchSpells(spells, spellQuery.query))
+            // and then apply the filters
+            setFilteredSpells(filterSpells(searchSpells(spells, spellQuery.query), spellQuery.filters));
         }
         else {
             // Otherwise, implement filtering
-            setFilteredSpells(filterSpells(spells, spellQuery.filters))
+            setFilteredSpells(filterSpells(spells, spellQuery.filters));
         }
     }, [spellQuery, spells]);
 

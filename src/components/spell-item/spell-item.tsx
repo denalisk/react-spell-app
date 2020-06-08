@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from 'react';
-import logo from './logo.svg';
 import './spell-item.scss';
-import Spell from '../../models/spell.interface';
 import { levelTextConvert, schoolLevelText } from '../../services/display-text.service';
 import { ISpellItem } from '../../models/prop-interfaces/spell-item.interface';
 import SpellProperty from '../spell-property/spell-property';
+import { Bookmark } from '../icons/icons';
+import { Color } from '../../scss/variables';
 
 const SpellItem = function({ spell }: ISpellItem): JSX.Element {
     const [isExpanded, toggleIsExpanded] = useState(false);
@@ -15,7 +15,7 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
 
     const buildClassTag = (spellClass: string) => {
         return (
-            <div className="class-tag">{spellClass}</div>
+            <div key={spellClass} className="class-tag">{spellClass}</div>
         );
     }
 
@@ -23,20 +23,27 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
         if (!isExpanded) {
             return (
                 <div className="minified-spell-element" onClick={handleToggleIsExpanded}>
-                    <div>
-                        <strong>{levelTextConvert(spell.level)}</strong>
-                    </div>
-                    <div>
-                        <strong>{spell.name}</strong>
+                    <div className="content-wrapper">
+                        <div className="level-text">
+                            <strong>{levelTextConvert(spell.level)}</strong>
+                        </div>
+                        <div className="spell-name-text">
+                            <strong>{spell.name}</strong>
+                        </div>
                     </div>
                 </div>
             )
         } else {
             return (
                 <div className="expanded-spell-element">
-                    <h2 onClick={ handleToggleIsExpanded } >
-                        <strong>{spell.name}</strong>
-                    </h2>
+                    <div className="title-line-container">
+                        <h2 onClick={handleToggleIsExpanded} >
+                            <strong>{spell.name}</strong>
+                        </h2>
+                        <div className="spell-control-container">
+                            <Bookmark color={Color.Dark}></Bookmark>
+                        </div>
+                    </div>
                     <div>
                         <strong>{schoolLevelText(spell.level, spell.school)}</strong>
                     </div>
@@ -53,8 +60,8 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
                         <SpellProperty value={spell.higherLevel} displayText="" hasHtml={true} />
                     </div>
                     <SpellProperty value={spell.page} displayText="Source" hasHtml={false}/>
-                    <div>
-                        <strong>Classes:</strong>
+                    <div className="classes-container">
+                        <span><strong>Classes:</strong></span>
                         {spell.class.map(buildClassTag)}
                     </div>
                 </div>

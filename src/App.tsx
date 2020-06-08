@@ -1,13 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import SpellBook from './components/spell-book/spell-book';
 
 function App() {
-  function handleClick(e: any) {
-    let newVar = e;
-  }
-
   return (
     <SpellBook></SpellBook>
   );

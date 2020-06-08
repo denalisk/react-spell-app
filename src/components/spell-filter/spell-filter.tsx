@@ -1,49 +1,88 @@
 import React, { Fragment, useState } from 'react';
 import './spell-filter.scss';
-import { ISpellFilter, IFilterGroup, IFilterRow } from '../../models/prop-interfaces/spell-filter.interface';
+import { ISpellFilter, IFilterGroup } from '../../models/prop-interfaces/spell-filter.interface';
 import { IFilterFacet } from '../../models/filter-facet.interface';
-import { ISelectTag } from '../../models/prop-interfaces/select-tag.interface';
-import { ISpellQuery } from '../../models/spell-query.interface';
-import useGlobalFilters from '../../hooks/global-filters.hook';
-import data from '../../data/filters.json'
+import useGlobalFilters from '../../hooks/global-query.hook';
+import { UpChevronSvg, DownChevronSvg } from '../icons/icons';
+import FilterTag from '../fitler-tag/filter-tag';
+import { Color } from '../../scss/variables';
+import SelectableFilterTag from '../fitler-tag/selectable-filter-tag';
 
 const SpellFilter = function ({ filterGroups }: ISpellFilter): JSX.Element | null {
-    const [spellFilters, addFilter, removeFilter] = useGlobalFilters();
+    const [spellQuery, toggleGlobalFilter] = useGlobalFilters();
+    const [filterDisplayOpen, setFilterDisplayOpen] = useState(false);
 
     if (filterGroups == null) {
         return null;
     }
 
+    const toggleFilterDisplayHandler = (): void => {
+        setFilterDisplayOpen(currentValue => !currentValue);
+    }
+
     const toggleFilter = (filter: IFilterFacet) => {
-        console.log('Toggling filter: ', filter);
-        filter.selected = !filter.selected;
-        if (filter.selected) {
-            addFilter(filter);
+        toggleGlobalFilter(filter);
+    }
+
+    const chevronState = () => {
+        if (filterDisplayOpen) {
+           return (<UpChevronSvg color={Color.Black}></UpChevronSvg>);
         } else {
-            removeFilter(filter);
+            return (<DownChevronSvg color={Color.Black}></DownChevronSvg>);
         }
+    }
+
+    const selectedFilters = () => {
+        if (spellQuery.filters.length) {
+            return spellQuery.filters.map(filter => {
+                return (
+                    <FilterTag key={filter.displayName} filter={filter} onTagClicked={(toggledFilter) => toggleFilter(toggledFilter)}></FilterTag>
+                );
+            });
+        }
+        else  {
+            return (<span className="empty-filters">no filters selected</span>);
+        }
+    }
+
+    const filterDropdownDisplay = () => {
+        if (filterDisplayOpen) {
+            return filterGroups.map(group => {
+                return (<div key={group.propertyName} className="filter-group">
+                    {mapFiltersGroup(group)}
+                </div>)                
+            });
+        } else {
+            return null;
+        }
+    }
+
+    const mapFiltersGroup = (filterGroup: IFilterGroup) => {
+        return filterGroup.filters.map(filter => {
+            return (
+                <Fragment key={filter.propertyValue}>
+                    <SelectableFilterTag filter={filter} onTagClicked={() => toggleFilter(filter)}></SelectableFilterTag>
+                </Fragment>
+            );
+        });
     }
 
     return (
         <Fragment>
-            {filterGroups.map(group => {
-                return group.filters.map(filter => {
-                    return (
-                        <div key={filter.propertyValue} className={`select-tag${filter.selected ? " highlight" : ""}`} onClick={() => toggleFilter(filter)}>
-                            {filter.displayName}
-                        </div>
-                    );
-                })
-            })}
-            {
-                spellFilters.map(filter => {
-                    return (
-                        <div key={filter.propertyValue}>{filter.displayName}</div>
-                    );
-                })
-            }
+            <section className="filter-section">
+                <div className="filters-header" onClick={toggleFilterDisplayHandler}>
+                    <div className="header-text">
+                        {chevronState()}
+                        <span>Filters:</span>
+                    </div>
+                    {selectedFilters()}
+                </div>
+                <div className={filterDisplayOpen ? "filter-dropdown dropdown-open" : "filter-dropdown"}>
+                    {filterDropdownDisplay()}
+                </div>
+            </section>
         </Fragment>
     );
 }
- 
+
 export default SpellFilter;

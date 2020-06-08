@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './search-bar.scss';
 import { ISearchTerm } from '../../models/prop-interfaces/search-term.interface';
 
 const SearchBar = function ({ onQueryChange }: ISearchTerm): JSX.Element | null {

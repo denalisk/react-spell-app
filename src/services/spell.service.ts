@@ -28,3 +28,20 @@ export function getSpells(): Promise<Spell[]> {
         .then(spells => sortSpells(spells));
 }
 
+const savedSpellsLocalStorageName = "TOME-savedspell-ids"
+
+function saveSpell(spell: Spell): void {
+    const currentSavedSpellIds = getSavedSpells();
+    setSavedSpells([spell.id, ...currentSavedSpellIds])
+}
+
+function getSavedSpells(): number[] {
+    const currentSavedSpells = window.localStorage.getItem(savedSpellsLocalStorageName);
+    return currentSavedSpells ? JSON.parse(currentSavedSpells) : [];
+}
+
+function setSavedSpells(spellIds: number[]): void {
+    const spellIdsJson = JSON.stringify(spellIds);
+    window.localStorage.setItem(savedSpellsLocalStorageName, spellIdsJson);
+}
+

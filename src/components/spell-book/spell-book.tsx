@@ -5,17 +5,17 @@ import { getSpells } from '../../services/spell.service';
 import Spell from '../../models/spell.interface';
 import SearchBar from '../search-bar/search-bar';
 import useSpellFilter from '../../hooks/use-spell-filter.hook';
-import { ISpellQuery } from '../../models/spell-query.interface';
-import { IFilterFacet } from '../../models/filter-facet.interface';
 import SpellFilter from '../spell-filter/spell-filter';
 import { getFilterGroups } from '../../services/filter.service';
 import { IFilterGroup } from '../../models/prop-interfaces/spell-filter.interface';
+import useGlobalQuery from '../../hooks/global-query.hook';
 
 function SpellBook() {
+    const [globalQuery,, queryChanged] = useGlobalQuery();
     const [spells, setSpells] = useState<Spell[]>([]);
     const [filterGroups, setFilterGroups] = useState<IFilterGroup[]>([]);
-    const [spellQuery, setSpellQuery] = useState<ISpellQuery>({ filters: [], query: '' });
-    const currentSpells = useSpellFilter(spellQuery, spells);
+    const currentSpells = useSpellFilter(globalQuery, spells);
+
 
     useEffect(() => {
         getSpells().then(spells => {
@@ -30,13 +30,9 @@ function SpellBook() {
     }, []);
 
     function queryStringChangeHandler(newQuery: string) {
-        setSpellQuery({ filters: [], query: newQuery });
+        // globalQuery.filters.forEach(filter => toggleGlobalFilter(filter));
+        queryChanged(newQuery);
     }
-
-    function selectedFiltersChangeHandler(newFilters: IFilterFacet[]) {
-        setSpellQuery({ filters: newFilters, query: '' });
-    }
-
 
     const generateSpellItem = (spell: Spell) => (
         // Apply filtering here
@@ -51,11 +47,6 @@ function SpellBook() {
         <div>
             <h1>Tome</h1>
             <SearchBar onQueryChange={queryStringChangeHandler}></SearchBar>
-            <h1>First Filter Group</h1>
-            <SpellFilter filterGroups={filterGroups}></SpellFilter>
-            <hr/>
-            <hr/>
-            <h1>Second Filter Group</h1>
             <SpellFilter filterGroups={filterGroups}></SpellFilter>
             {currentSpells.map(generateSpellItem)}
         </div>

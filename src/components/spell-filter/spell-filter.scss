@@ -1,4 +1,39 @@
-.highlight {
-    color: red;
-    background-color: yellow;
+@import '../../scss/variables';
+
+.filter-section {
+    .filters-header {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        padding: 5px;
+        background-color: $color-detail;
+    }
+
+    .header-text {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        padding: 7px 10px 7px 0;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .empty-filters {
+        font-size: $font-size-sm;
+        padding-top: 2px;
+    }
+
+    .filter-group {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 0 10px 0;
+    }
+
+    .filter-dropdown {
+        margin: 10px 0 0 0;
+        &.dropdown-open {
+            border-bottom: 5px solid $color-detail;
+        }
+    }
 }

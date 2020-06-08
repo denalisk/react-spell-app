@@ -1,0 +1,40 @@
+@import '../../scss/variables';
+
+.filter-tag {
+    display: flex;
+    font-size: $font-size-sm;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 3px 5px 3px 0;
+    background-color: $color-dark;
+    color: $color-light;
+    border-radius: 3px;
+    & > span {
+        padding-right: 10px;
+    }
+    & svg {
+        height: 15px;
+        width: 15px;
+        margin-top: 1px;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.select-tag {
+    margin: 5px 10px 0 0;
+    background-color: $color-white;
+    color: $color-dark;
+    border: 1px solid $color-dark;
+    & > span {
+        padding-right: 0;
+    }
+}
+
+.highlight {
+    background-color: $color-detail;
+}
