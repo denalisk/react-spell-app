@@ -1,6 +1,15 @@
 @import '../../scss/variables';
 
 .filter-section {
+    .clear-filters {
+        background: transparent;
+        border: none;
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
     .filters-header {
         display: flex;
         flex-flow: row wrap;

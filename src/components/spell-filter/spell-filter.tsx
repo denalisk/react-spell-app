@@ -9,7 +9,7 @@ import { Color } from '../../scss/variables';
 import SelectableFilterTag from '../fitler-tag/selectable-filter-tag';
 
 const SpellFilter = function ({ filterGroups }: ISpellFilter): JSX.Element | null {
-    const [spellQuery, toggleGlobalFilter] = useGlobalFilters();
+    const [spellQuery, globalFilterManager] = useGlobalFilters();
     const [filterDisplayOpen, setFilterDisplayOpen] = useState(false);
 
     if (filterGroups == null) {
@@ -20,8 +20,12 @@ const SpellFilter = function ({ filterGroups }: ISpellFilter): JSX.Element | nul
         setFilterDisplayOpen(currentValue => !currentValue);
     }
 
+    const resetQueryHandler = (): void => {
+        globalFilterManager.resetQuery();
+    }
+
     const toggleFilter = (filter: IFilterFacet) => {
-        toggleGlobalFilter(filter);
+        globalFilterManager.toggleFilter(filter);
     }
 
     const chevronState = () => {
@@ -34,15 +38,24 @@ const SpellFilter = function ({ filterGroups }: ISpellFilter): JSX.Element | nul
 
     const selectedFilters = () => {
         if (spellQuery.filters.length) {
-            return spellQuery.filters.map(filter => {
-                return (
-                    <FilterTag key={filter.displayName} filter={filter} onTagClicked={(toggledFilter) => toggleFilter(toggledFilter)}></FilterTag>
-                );
-            });
+            return (
+                <Fragment>
+                    {selectedFiltersMap(spellQuery.filters)}
+                    <button className="clear-filters" onClick={resetQueryHandler}>Clear filters</button>
+                </Fragment>
+            );
         }
         else  {
             return (<span className="empty-filters">no filters selected</span>);
         }
+    }
+
+    const selectedFiltersMap = (filters: IFilterFacet[]) => {
+        return filters.map(filter => {
+            return (
+            <FilterTag key={filter.displayName} filter={filter} onTagClicked={(toggledFilter) => toggleFilter(toggledFilter)}></FilterTag>
+            );
+        });
     }
 
     const filterDropdownDisplay = () => {

@@ -2,6 +2,7 @@ import { IFilterFacet } from "../models/filter-facet.interface";
 import { useState, useEffect } from "react";
 import { BehaviorSubject} from 'rxjs';
 import { ISpellQuery } from "../models/spell-query.interface";
+import IGlobalQueryManger from "../models/global-query-manager.interface";
 
 const queryBehaviorSubject = new BehaviorSubject<ISpellQuery>({filters: [], query: ''});
 
@@ -21,12 +22,18 @@ function toggleFilter(targetFilter: IFilterFacet): void {
     }
 }
 
-function queryStringChange(newQueryString: string): void {
+function queryStringChanged(newQueryString: string): void {
     const currentQuery = queryBehaviorSubject.getValue();
     internalSetState({ filters: [...currentQuery.filters], query: newQueryString });
 }
 
-function useGlobalQuery(): [ISpellQuery, Function, Function] {
+function resetQuery(): void {
+    const currentQuery = queryBehaviorSubject.getValue();
+    currentQuery.filters.forEach(filter => filter.selected = false);
+    internalSetState({filters: [], query: ''});
+}
+
+function useGlobalQuery(): [ISpellQuery, IGlobalQueryManger] {
     const newListener = useState<ISpellQuery>()[1];
     useEffect(() => {
         const querySubscription = queryBehaviorSubject.subscribe(query => newListener(query));
@@ -38,7 +45,7 @@ function useGlobalQuery(): [ISpellQuery, Function, Function] {
         }
     }, [newListener]);
 
-    return [queryBehaviorSubject.getValue(), toggleFilter, queryStringChange];
+    return [queryBehaviorSubject.getValue(), { toggleFilter, queryStringChanged, resetQuery }];
 }
 
 export default useGlobalQuery;

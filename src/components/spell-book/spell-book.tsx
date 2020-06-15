@@ -11,7 +11,7 @@ import { IFilterGroup } from '../../models/prop-interfaces/spell-filter.interfac
 import useGlobalQuery from '../../hooks/global-query.hook';
 
 function SpellBook() {
-    const [globalQuery,, queryChanged] = useGlobalQuery();
+    const [globalQuery, globalFilterManager ] = useGlobalQuery();
     const [spells, setSpells] = useState<Spell[]>([]);
     const [filterGroups, setFilterGroups] = useState<IFilterGroup[]>([]);
     const currentSpells = useSpellFilter(globalQuery, spells);
@@ -30,8 +30,7 @@ function SpellBook() {
     }, []);
 
     function queryStringChangeHandler(newQuery: string) {
-        // globalQuery.filters.forEach(filter => toggleGlobalFilter(filter));
-        queryChanged(newQuery);
+        globalFilterManager.queryStringChanged(newQuery);
     }
 
     const generateSpellItem = (spell: Spell) => (
