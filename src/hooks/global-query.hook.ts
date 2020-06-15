@@ -26,14 +26,6 @@ function queryStringChange(newQueryString: string): void {
     internalSetState({ filters: [...currentQuery.filters], query: newQueryString });
 }
 
-// function addFilter(newFilter: IFilterFacet): void {
-//     internalSetState([ ...queryBehaviorSubject.getValue(), newFilter ]);
-// }
-
-// function removeFilter(targetFilter: IFilterFacet): void {
-//     internalSetState(queryBehaviorSubject.getValue().filter(x => x !== targetFilter));
-// }
-
 function useGlobalQuery(): [ISpellQuery, Function, Function] {
     const newListener = useState<ISpellQuery>()[1];
     useEffect(() => {

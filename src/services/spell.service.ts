@@ -30,12 +30,21 @@ export function getSpells(): Promise<Spell[]> {
 
 const savedSpellsLocalStorageName = "TOME-savedspell-ids"
 
-function saveSpell(spell: Spell): void {
+export function saveSpell(spellId: number): number[] {
     const currentSavedSpellIds = getSavedSpells();
-    setSavedSpells([spell.id, ...currentSavedSpellIds])
+    const newSavedSpellids = [spellId, ...currentSavedSpellIds];
+    setSavedSpells(newSavedSpellids);
+    return newSavedSpellids;
 }
 
-function getSavedSpells(): number[] {
+export function clearSpell(spellId: number): number[] {
+    const currentSavedSpellIds = getSavedSpells();
+    const newSavedSpellIds = currentSavedSpellIds.filter(x => x != spellId);
+    setSavedSpells(newSavedSpellIds);
+    return newSavedSpellIds;
+}
+
+export function getSavedSpells(): number[] {
     const currentSavedSpells = window.localStorage.getItem(savedSpellsLocalStorageName);
     return currentSavedSpells ? JSON.parse(currentSavedSpells) : [];
 }
