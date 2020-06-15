@@ -1,0 +1,11 @@
+@import '../../scss/variables'; 
+
+h1 {
+    text-shadow: 1px 1px $color-detail;
+}
+
+.spell-item {
+    &:not(:last-child) {
+        border-bottom: 1px solid $color-main;
+    }
+}

@@ -9,14 +9,24 @@ import SpellFilter from '../spell-filter/spell-filter';
 import { getFilterGroups } from '../../services/filter.service';
 import { IFilterGroup } from '../../models/prop-interfaces/spell-filter.interface';
 import useGlobalQuery from '../../hooks/global-query.hook';
-import ISpellBook from '../../models/prop-interfaces/spell-book.interface';
 
-function SpellBook({spells, filterGroups}: ISpellBook) {
+function SpellBook() {
     const [globalQuery, globalFilterManager ] = useGlobalQuery();
-    
+    const [spells, setSpells] = useState<Spell[]>([]);
+    const [filterGroups, setFilterGroups] = useState<IFilterGroup[]>([]);
     const currentSpells = useSpellFilter(globalQuery, spells);
 
-    
+    useEffect(() => {
+        getSpells().then(spells => {
+            setSpells(spells);
+        })
+    }, []);
+
+    useEffect(() => {
+        getFilterGroups().then(filterGroups => {
+            setFilterGroups(filterGroups);
+        })
+    }, []);
 
     function queryStringChangeHandler(newQuery: string) {
         globalFilterManager.queryStringChanged(newQuery);
