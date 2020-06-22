@@ -5,21 +5,23 @@ import { ISpellItem } from '../../models/prop-interfaces/spell-item.interface';
 import SpellProperty from '../spell-property/spell-property';
 import { Bookmark } from '../icons/icons';
 import { Color } from '../../scss/variables';
-import useGlobalBookmarks from '../../hooks/global-bookmark.hook';
+import { useGlobalSpellSave } from '../../hooks/global-bookmark.hook';
 
 const SpellItem = function({ spell }: ISpellItem): JSX.Element {
     const [isExpanded, toggleIsExpanded] = useState(false);
-    const [isSpellSaved, addSavedSpell, clearSavedSpell] = useGlobalBookmarks(spell.id);
+    const [isSpellSaved, spellSaveManager ] = useGlobalSpellSave(spell.id);
 
     const handleToggleIsExpanded = () => {
         toggleIsExpanded(i => !i);
     }
 
-    const handleToggleSpellSaved = () => {
+    const handleToggleSpellSaved = (e: any) => {
+        e.preventDefault();
+        e.stopPropagation();
         if (isSpellSaved) {
-            clearSavedSpell(spell.id);
+            spellSaveManager.clearSpell(spell.id);
         } else {
-            addSavedSpell(spell.id);
+            spellSaveManager.saveSpell(spell.id);
         }
     }
 
@@ -40,6 +42,9 @@ const SpellItem = function({ spell }: ISpellItem): JSX.Element {
                         <div className="spell-name-text">
                             <strong>{spell.name}</strong>
                         </div>
+                    </div>
+                    <div className={isSpellSaved ? "spell-control-container selected" : "spell-control-container"} onClick={handleToggleSpellSaved}>
+                        <Bookmark color={Color.Dark}></Bookmark>
                     </div>
                 </div>
             )

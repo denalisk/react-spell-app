@@ -1,8 +1,8 @@
-import { IFilterFacet } from "../models/filter-facet.interface";
 import { useState, useEffect } from "react";
 import { BehaviorSubject} from 'rxjs';
-import { ISpellQuery } from "../models/spell-query.interface";
 import { getSavedSpells, saveSpell, clearSpell } from "../services/spell.service";
+import IGlobalBookmarkManger from "../models/global-bookmark-manage.interface";
+import Spell from "../models/spell.interface";
 
 const savedSpellBehaviorSubject = new BehaviorSubject<number[]>([]);
 
@@ -18,7 +18,28 @@ function clearSavedSpell(spellId: number): void {
     internalSetState(clearSpell(spellId));
 }
 
-function useGlobalBookmarks(spellId: number): [boolean, Function, Function] {
+export function useGlobalBookmarks(spells: Spell[]): number[] {
+    const [savedSpells, setSavedSpells] = useState<Array<number>>([]);
+
+    useEffect(() => {
+        const bookmarkSubscription = savedSpellBehaviorSubject.subscribe(spellIds => setSavedSpells(spellIds));
+
+        return () => {
+            if (!bookmarkSubscription.closed) {
+                bookmarkSubscription.unsubscribe();
+            }
+        }
+    }, [setSavedSpells]);
+
+    useEffect(() => {
+        const initialSavedSpells = getSavedSpells();
+        internalSetState(initialSavedSpells);
+    }, []);
+
+    return savedSpells;
+}
+
+export function useGlobalSpellSave(spellId: number): [boolean, IGlobalBookmarkManger] {
     const newListener = useState<boolean>()[1];
     useEffect(() => {
         const querySubscription = savedSpellBehaviorSubject.subscribe(spellIds => newListener(spellIds.includes(spellId)));
@@ -35,7 +56,10 @@ function useGlobalBookmarks(spellId: number): [boolean, Function, Function] {
         internalSetState(initialSavedSpells);
     }, []);
 
-    return [savedSpellBehaviorSubject.getValue().includes(spellId), addSavedSpell, clearSavedSpell];
+    return [
+        savedSpellBehaviorSubject.getValue().includes(spellId), 
+        { 
+            saveSpell: addSavedSpell, 
+            clearSpell: clearSavedSpell 
+        }];
 }
-
-export default useGlobalBookmarks;

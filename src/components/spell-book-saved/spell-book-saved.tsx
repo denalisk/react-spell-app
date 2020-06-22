@@ -1,49 +1,39 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import './spell-book.scss';
+import React, { Fragment } from 'react';
+import './spell-book-saved.scss';
 import SpellItem from '../spell-item/spell-item';
-import { getSpells } from '../../services/spell.service';
 import Spell from '../../models/spell.interface';
 import SearchBar from '../search-bar/search-bar';
 import useSpellFilter from '../../hooks/use-spell-filter.hook';
 import SpellFilter from '../spell-filter/spell-filter';
-import { getFilterGroups } from '../../services/filter.service';
-import { IFilterGroup } from '../../models/prop-interfaces/spell-filter.interface';
 import useGlobalQuery from '../../hooks/global-query.hook';
+import ISpellBook from '../../models/prop-interfaces/spell-book.interface';
+import useSavedSpells from '../../hooks/saved-spells.hook';
+import useSpellSort from '../../hooks/spell-sort.hook';
 
-function SpellBook() {
-    const [globalQuery, globalFilterManager ] = useGlobalQuery();
-    const [spells, setSpells] = useState<Spell[]>([]);
-    const [filterGroups, setFilterGroups] = useState<IFilterGroup[]>([]);
-    const currentSpells = useSpellFilter(globalQuery, spells);
-
-    useEffect(() => {
-        getSpells().then(spells => {
-            setSpells(spells);
-        })
-    }, []);
-
-    useEffect(() => {
-        getFilterGroups().then(filterGroups => {
-            setFilterGroups(filterGroups);
-        })
-    }, []);
+function SavedSpellBook({ spells, filterGroups }: ISpellBook) {
+    const [globalQuery, globalFilterManager] = useGlobalQuery();
+    const savedSpells = useSavedSpells(spells);
+    const sortedSpells = useSpellSort(savedSpells);
+    const currentSpells = useSpellFilter(globalQuery, sortedSpells);
 
     function queryStringChangeHandler(newQuery: string) {
         globalFilterManager.queryStringChanged(newQuery);
     }
 
-    const generateSpellItem = (spell: Spell) => (
-        // Apply filtering here
-        <Fragment key={spell.id}>
-            <div className="spell-item">
-                <SpellItem spell={spell} key={spell.id} />
-            </div>
-        </Fragment>
-    );
+    const generateSpellItem = (spell: Spell) => {
+        // console.log('Generating spell item', spell);
+        return (
+            <Fragment key={spell.id}>
+                <div className="spell-item">
+                    <SpellItem spell={spell} key={spell.id} />
+                </div>
+            </Fragment>
+        );
+    }
 
     return (
         <div>
-            <h1>Tome</h1>
+            <h1>Saved spells</h1>
             <SearchBar onQueryChange={queryStringChangeHandler}></SearchBar>
             <SpellFilter filterGroups={filterGroups}></SpellFilter>
             {currentSpells.map(generateSpellItem)}
@@ -51,4 +41,4 @@ function SpellBook() {
     );
 }
 
-export default SpellBook;
+export default SavedSpellBook;

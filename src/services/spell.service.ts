@@ -2,10 +2,9 @@ import Spell from "../models/spell.interface";
 import data from "../data/spells.json";
 
 /**
- * always sort spells by level and then alphabetically
+ * sort spells by level and then alphabetically
  */
-function sortSpells(spells: Spell[]): Spell[] {
-    console.log("Sorting");
+export function sortSpells(spells: Spell[]): Spell[] {
     return spells.sort((spellA, spellB) => {
         if (spellA.level - spellB.level === 0) {
             const nameA = spellA.name.toUpperCase();
@@ -24,8 +23,7 @@ function sortSpells(spells: Spell[]): Spell[] {
 }
 
 export function getSpells(): Promise<Spell[]> {
-    return Promise.resolve<Spell[]>(data.spells)
-        .then(spells => sortSpells(spells));
+    return Promise.resolve<Spell[]>(data.spells);
 }
 
 const savedSpellsLocalStorageName = "TOME-savedspell-ids"
@@ -39,7 +37,7 @@ export function saveSpell(spellId: number): number[] {
 
 export function clearSpell(spellId: number): number[] {
     const currentSavedSpellIds = getSavedSpells();
-    const newSavedSpellIds = currentSavedSpellIds.filter(x => x != spellId);
+    const newSavedSpellIds = currentSavedSpellIds.filter(x => x !== spellId);
     setSavedSpells(newSavedSpellIds);
     return newSavedSpellIds;
 }
