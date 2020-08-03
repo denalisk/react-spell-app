@@ -1,6 +1,8 @@
 import React from 'react';
 import { IStyleIcon } from '../../models/prop-interfaces/style-icon.interface';
 
+// I beleive these are from "feather icons", open source icons: https://feathericons.com
+
 export const UpChevronSvg = ({ color }: IStyleIcon) => {
     return (
         <svg viewBox="0 0 24 24" width="24" height="24" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
