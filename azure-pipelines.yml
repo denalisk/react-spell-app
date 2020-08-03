@@ -11,13 +11,20 @@ pool:
 
 steps:
 - task: NodeTool@0
+  displayName: "Install Node"
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '12.x'
   displayName: 'Install Node.js'
 
 - script: |
     npm install
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'Run npm install and build'
 
-
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish build'
+  condition: always()
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
