@@ -15,15 +15,23 @@ steps:
   inputs:
     versionSpec: '12.16.x'
 
+# Run npm install 
 - script: |
     npm install
     npm run build
   displayName: 'Run npm install and build'
 
+# Copy the server file to the build folder for publishing
+- task: CopyFiles@2
+  inputs: 
+    contents: 'server.js'
+    targetFolder: '$(Build.SourcesDirectory)/build'
+
+# Publish the build folder to be consumed by the release pipeline
 - task: PublishBuildArtifacts@1
   displayName: 'Publish build'
   condition: always()
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.SourcesDirectory)/build'
     ArtifactName: 'drop'
     publishLocation: 'Container'
