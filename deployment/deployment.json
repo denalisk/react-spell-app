@@ -1,22 +1,20 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "app_name": {
-            "defaultValue": "reactspellapp",
-            "type": "String"
-        },
-        "serverfarms_ASP_ReactSpellApp_904b_name": {
-            "defaultValue": "ASP-ReactSpellApp-904b",
+        "app-name": {
+            "defaultValue": "spelltomeapp",
             "type": "String"
         }
     },
-    "variables": {},
+    "variables": {
+        "server-name": "[concat(parameters('app-name'), 'server')]"
+    },
     "resources": [
         {
             "type": "microsoft.insights/components",
             "apiVersion": "2018-05-01-preview",
-            "name": "[parameters('app_name')]",
+            "name": "[parameters('app-name')]",
             "location": "westus",
             "kind": "web",
             "properties": {
@@ -30,7 +28,7 @@
         {
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2018-02-01",
-            "name": "[parameters('serverfarms_ASP_ReactSpellApp_904b_name')]",
+            "name": "[variables('server-name')]",
             "location": "West US",
             "sku": {
                 "name": "F1",
@@ -54,27 +52,27 @@
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
-            "name": "[parameters('app_name')]",
+            "name": "[parameters('app-name')]",
             "location": "West US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_ReactSpellApp_904b_name'))]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('server-name'))]"
             ],
             "kind": "app",
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('app_name'), '.azurewebsites.net')]",
+                        "name": "[concat(parameters('app-name'), '.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('app_name'), '.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('app-name'), '.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_ReactSpellApp_904b_name'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('server-name'))]",
                 "reserved": false,
                 "isXenon": false,
                 "hyperV": false,
@@ -92,10 +90,10 @@
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('app_name'), '/web')]",
+            "name": "[concat(parameters('app-name'), '/web')]",
             "location": "West US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('app_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('app-name'))]"
             ],
             "properties": {
                 "numberOfWorkers": 1,
@@ -111,7 +109,7 @@
                     "hostingstart.html"
                 ],
                 "netFrameworkVersion": "v4.0",
-                "nodeVersion": "12.13.0",
+                "nodeVersion": "12.16.1",
                 "requestTracingEnabled": false,
                 "remoteDebuggingEnabled": false,
                 "httpLoggingEnabled": false,
@@ -165,10 +163,10 @@
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('app_name'), '/', parameters('app_name'), '.azurewebsites.net')]",
+            "name": "[concat(parameters('app-name'), '/', parameters('app-name'), '.azurewebsites.net')]",
             "location": "West US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('app_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('app-name'))]"
             ],
             "properties": {
                 "siteName": "reactspellapp",
