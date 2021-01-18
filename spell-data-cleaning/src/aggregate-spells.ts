@@ -55,8 +55,8 @@ export default async function aggregateSpells() {
 
     console.log('Applying ids and dedupe');
     const hashmap: { [key: number]: number } = {};
-    allSpellData.spells = allSpellData.spells.reduce<Spell[]>((aggregate, current, i) => {
-        const id = basicHash(current.name);
+    allSpellData.spells = allSpellData.spells.reduce<Spell[]>((aggregate, current) => {
+        const id = basicHash(current.name.toLowerCase());
 
         // If the id exists in the hashmap, we already have this spell
         if (hashmap[id]) {

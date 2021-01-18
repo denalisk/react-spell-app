@@ -720,25 +720,6 @@
             "School": "Necromancy"
         },
         {
-            "Id": "x3vuxvis",
-            "Version": "2.4.4",
-            "Name": "Abi-Dalzim's Horrid Writing",
-            "Path": "",
-            "Source": "Xanathar's Guide to Everything",
-            "CastingTime": "1 action",
-            "Classes": [
-                "Sorcerer",
-                "Wizard"
-            ],
-            "Components": "V, S, M (a bit of sponge)",
-            "Description": "<p style='margin:0;padding: 5px 0'>You draw the moisture from every creature in a 30-foot cube centered on a point you choose within range. Each creature in that area must make a Constitution saving throw. Constructs and undead aren’t affected, and plants and water elementals make this saving throw with disadvantage. A creature takes 12d8 necrotic damage on a failed save, or half as much damage on a successful one.</p><p style='margin:0;padding: 5px 0'>onmagical plants in the area that aren’t creatures, such as trees and shrubs, wither and die instantly.</p>",
-            "Duration": "Instantaneous",
-            "Level": "8",
-            "Range": "150 ft.",
-            "Ritual": false,
-            "School": "Necromancy"
-        },
-        {
             "Id": "zh52zd0e",
             "Version": "2.4.3",
             "Name": "Absorb elements",
