@@ -1,4 +1,4 @@
-export default interface PreSpell {
+export default interface XGESpell {
     Id: string;
     Version: string;
     Name: string;

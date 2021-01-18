@@ -1,4 +1,4 @@
-import Spell from "../src/models/spell.interface";
+import Spell from "../react-spell-app/src/models/spell.interface";
 
 export function importJsonSpellData() {
     // Grab file of spells to be imported
