@@ -1,6 +1,8 @@
 @import '../../scss/variables';
 
 .search-box {
+    display: flex;
+    flex-flow: row nowrap;
     margin: 5px 0;
     padding: 5px 10px;
     line-height: 1.5;
@@ -22,5 +24,13 @@
             border-radius: 0;
             border: none;
         }
+    }
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    &:hover {
+        cursor: pointer;
     }
 }
