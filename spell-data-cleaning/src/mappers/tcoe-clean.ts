@@ -1,9 +1,9 @@
 import Spell from "../../../react-spell-app/src/models/spell.interface";
 import ISpellMapper from "../models/spell-mapper.interface";
-import XGESpell from "../models/xge-spell.interface";
+import TCOESpell from "../models/tcoe-spell.interface";
 
 export class TCOEMapper implements ISpellMapper<TCOESpell> {
-    public map(preSpell: XGESpell): Spell {
+    public map(preSpell: TCOESpell): Spell {
         const newSpell = {
             id: 0,
             name: preSpell.Name,

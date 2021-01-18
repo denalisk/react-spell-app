@@ -1,4 +1,4 @@
-import { xGEFileConfig } from "../config/spell-files.config";
+import { tCOEFileConfig } from "../config/spell-files.config";
 import { XGEMapper } from "../mappers/xge-clean";
 import ISpellData from "../models/spell-data.interface";
 import XGESpell from "../models/xge-spell.interface";
@@ -8,8 +8,8 @@ interface IXGEPreSpellData {
     spells: XGESpell[];
 }
 
-export default async function runXGEMapper() {
-    const config = xGEFileConfig;
+export default async function runTCOEMapper() {
+    const config = tCOEFileConfig;
     const fileService = new FileService();
     const mapper = new XGEMapper();
 

@@ -10,6 +10,11 @@ export const xGEFileConfig: IDataFileConfiguration = {
     destinationFileName: 'E:\\Code\\spellAppReact\\spell-data-cleaning\\src\\data\\xge-spells-mapped.json'
 }
 
+export const tCOEFileConfig: IDataFileConfiguration = {
+    sourceFileName: 'E:\\Code\\spellAppReact\\spell-data-cleaning\\src\\data\\tcoe-spells.json',
+    destinationFileName: 'E:\\Code\\spellAppReact\\spell-data-cleaning\\src\\data\\tcoe-spells-mapped.json'
+}
+
 export const pHBFileConfig: IDataFileConfiguration = {
     sourceFileName: 'E:\\Code\\spellAppReact\\spell-data-cleaning\\src\\data\\phb-spells.json',
     destinationFileName: 'E:\\Code\\spellAppReact\\spell-data-cleaning\\src\\data\\phb-spells-mapped.json'
@@ -17,5 +22,6 @@ export const pHBFileConfig: IDataFileConfiguration = {
 
 export const allFileConfigs: IDataFileConfiguration[] = [
     xGEFileConfig,
-    pHBFileConfig
+    pHBFileConfig,
+    tCOEFileConfig
 ]
