@@ -1,5 +1,5 @@
-import Spell from "../react-spell-app/src/models/spell.interface";
-import PHBSpell from "./models/phb-spell.interface";
+import Spell from "../../../react-spell-app/src/models/spell.interface";
+import PHBSpell from "../models/phb-spell.interface";
 
 function clean() {
     const preSpells = this.preSpells;

@@ -1,4 +1,5 @@
-import Spell from "../react-spell-app/src/models/spell.interface";
+import Spell from "../../../react-spell-app/src/models/spell.interface";
+import XGESpell from "../models/xge-spell.interface";
 
 export function importJsonSpellData() {
     // Grab file of spells to be imported
@@ -7,8 +8,44 @@ export function importJsonSpellData() {
     // 
 }
 
-export function xantharsMapper() {
-    
+export class XGEMapper {
+    public xantharsMapper(preSpell: XGESpell): Spell {
+        const newSpell = new Spell();
+        newSpell.name = preSpell.Name;
+        newSpell.description = preSpell.Description;
+        newSpell.page = "xge";
+        newSpell.range = preSpell.Range;
+        newSpell.higherLevel = "";
+        newSpell.components = mapComponent(preSpell.Components)[0];
+    }
+
+    public mapComponent = (componentString) => {
+        const components = componentString.split('(');
+        if (components.length = 2) {
+            components[1].replace(")", "");
+        }
+
+        return components;
+    }
+}
+
+export function xantharsMapper(preSpell: XGESpell): Spell {
+    const newSpell = new Spell();
+    newSpell.name = preSpell.Name;
+    newSpell.description = preSpell.Description;
+    newSpell.page = "xge";
+    newSpell.range = preSpell.Range;
+    newSpell.higherLevel = "";
+    newSpell.components = mapComponent(preSpell.Components)[0];
+}
+
+const mapComponent = (componentString) => {
+    const components = componentString.split('(');
+    if (components.length = 2) {
+        components[1].replace(")", "");
+    }
+
+    return components;
 }
 
 export function spellDataMapper(sourceField: string, mapper: Function, targetSpell: Spell) {
