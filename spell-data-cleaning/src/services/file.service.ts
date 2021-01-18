@@ -19,7 +19,7 @@ export class FileService {
                     console.log(`Unable to write to file ${this.fileConfig.destinationFileName}`);
                     reject(err);
                 } else {
-                    resolve(null);
+                    resolve();
                 }
             })
         });

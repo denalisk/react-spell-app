@@ -2,21 +2,22 @@ import Spell from "../../../react-spell-app/src/models/spell.interface";
 import PHBSpell from "../models/phb-spell.interface";
 
 function clean() {
-    const preSpells = this.preSpells;
+    // TODO this will need to be hooked up to data
+    const preSpells: PHBSpell[] = [];
     for (let i = 0; i < preSpells.length; i++) {
         const currentSpell = preSpells[i];
         if (!currentSpell.id) {
             currentSpell.id = i + 1;
         }
 
-        const mappedSpell = this.buildSpellFromPreSpell(currentSpell);
+        const mappedSpell = buildSpellFromPreSpell(currentSpell);
 
         // TODO: this is old code that I used for the initial migration, to use
         // it will need some return vectors
     }
 }
 
-  function buildSpellFromPreSpell(preSpell: PHBSpell): Spell {
+function buildSpellFromPreSpell(preSpell: PHBSpell): Spell {
     return {
         id: preSpell.id,
         name: preSpell.name,
@@ -31,7 +32,7 @@ function clean() {
         concentration: preSpell.concentration,
         archetype: preSpell.archetype ? preSpell.archetype.split('<br>').map(item => item.trim()) : [],
         castingTime: preSpell.castingTime,
-        level: this.levelParser(preSpell.level),
+        level: levelParser(preSpell.level),
         school: preSpell.school,
         class: preSpell.class.split(',').map(item => item.trim())
     }
