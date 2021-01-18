@@ -1,4 +1,4 @@
-export default interface DataFileConfiguration {
+export default interface IDataFileConfiguration {
     sourceFileName: string;
     destinationFileName: string;
 }

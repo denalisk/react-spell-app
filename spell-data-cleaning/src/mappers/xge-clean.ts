@@ -1,68 +1,60 @@
 import Spell from "../../../react-spell-app/src/models/spell.interface";
+import ISpellMapper from "../models/spell-mapper.interface";
 import XGESpell from "../models/xge-spell.interface";
 
-export function importJsonSpellData() {
-    // Grab file of spells to be imported
-    // Read from json and create objects
-    // map from objects to internal spell schema (maybe field by field?)
-    // 
-}
-
-export class XGEMapper {
-    public xantharsMapper(preSpell: XGESpell): Spell {
+export class XGEMapper implements ISpellMapper<XGESpell> {
+    public map(preSpell: XGESpell): Spell {
         const newSpell = {
+            id: 0,
             name: preSpell.Name,
             description: preSpell.Description,
-            page: "xge",
+            page: 'xge',
+            components: this.mapComponent(preSpell.Components)[0],
+            higherLevel: this.mapDescription(preSpell.Description)[1],
             range: preSpell.Range,
-            higherLevel: "",
-            components: mapComponent(preSpell.Components)[0],
-            id: number
-            higherLevel?: string,
-            page: string,
-            range: string,
-            components: string,
-            material?: string,
-            ritual: string,
-            duration: string,
-            concentration: string,
-            archetype?: string[],
-            castingTime: string,
-            level: number,
-            school: string,
-            class: string[],
+            material: this.mapComponent(preSpell.Components)[1],
+            ritual: preSpell.Ritual ? 'yes' : 'no',
+            duration: this.mapDuration(preSpell.Duration)[0],
+            concentration: this.mapDuration(preSpell.Duration)[1],
+            castingTime: preSpell.CastingTime,
+            level: parseInt(preSpell.Level),
+            school: preSpell.School,
+            class: preSpell.Classes
         };
         
         return newSpell;
     }
 
-    public mapComponent = (componentString) => {
+    private mapComponent = (componentString: string): string[] => {
         const components = componentString.split('(');
-        if (components.length = 2) {
-            components[1].replace(")", "");
+        if (components.length === 2) {
+            components[1].replace(')', '');
         }
 
         return components;
     }
-}
 
-export function xantharsMapper(preSpell: XGESpell): Spell {
-    const newSpell = new Spell();
-    newSpell.name = preSpell.Name;
-    newSpell.description = preSpell.Description;
-    newSpell.page = "xge";
-    newSpell.range = preSpell.Range;
-    newSpell.higherLevel = "";
-    newSpell.components = mapComponent(preSpell.Components)[0];
-}
-
-const mapComponent = (componentString) => {
-    const components = componentString.split('(');
-    if (components.length = 2) {
-        components[1].replace(")", "");
+    private mapDescription = (description: string): string[] => {
+        return description.split('<p>At Higher Levels.</p>');
     }
 
-    return components;
+    /**
+     * 
+     * @param duration tuple of the duration, [durationString, concentrationYesNo]
+     */
+    private mapDuration = (duration: string): string[] => {
+        const durations = duration.split(', ');
+        const mappedDurations = []
+        if (durations.length === 2) {
+            mappedDurations[0] = durations[1].charAt(0).toUpperCase() + durations[1].slice(1);
+            mappedDurations[1] = 'yes';
+        } else {
+            mappedDurations[0] = durations[0];
+            mappedDurations[1] = 'no';
+        }
+
+        return mappedDurations;
+    }
 }
 
 export function spellDataMapper(sourceField: string, mapper: Function, targetSpell: Spell) {

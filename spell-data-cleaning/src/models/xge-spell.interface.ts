@@ -5,12 +5,12 @@ export default interface XGESpell {
     Path: string;
     Source: string;
     CastingTime: string;
-    Classes: string;
+    Classes: string[];
     Components: string;
     Description: string;
     Duration: string;
     Level: string;
     Range: string;
-    Ritual: string;
+    Ritual: boolean;
     School: string;
 }

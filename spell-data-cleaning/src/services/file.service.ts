@@ -1,8 +1,8 @@
 import fs from "fs";
-import DataFileConfiguration from "../models/data-file.configuration";
+import IDataFileConfiguration from "../models/data-file.configuration";
 
 export class FileService {
-    constructor(private fileConfig: DataFileConfiguration) {
+    constructor(private fileConfig: IDataFileConfiguration) {
 
     }
 
