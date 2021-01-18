@@ -51,7 +51,7 @@
                 "Wizard"
             ],
             "Components": "V, S, M (clay and water)",
-            "Description": "<p>You choose an area of stone or mud that you can see that fits within a 40-foot cube and is within range, and choose one of the following effects.</p><p>**Transmute Rock to Mud.** Nonmagical rock of any sort in the area becomes an equal volume of thick, flowing mud that remains for the spell’s duration.</p><p>The ground in the spell’s area becomes muddy enough that creatures can sink into it. Each foot that a creature moves through the mud costs 4 feet of movement, and any creature on the ground when you cast the spell must make a Strength saving throw. A creature must also make the saving throw when it moves into the area for the first time on a turn or ends its turn there. On a failed save, a creature sinks into the mud and is restrained, though it can use an action to end the restrained condition on itself by pulling itself free of the mud.</p><p>If you cast the spell on a ceiling, the mud falls. Any creature under the mud when it falls must make a Dexterity saving throw. A creature takes 4d8 bludgeoning damage on a failed save, or half as much damage on a successful one.</p><p>**Transmute Mud to Rock.** Nonmagical mud or quicksand in the area no more than 10 feet deep transforms into soft stone for the spell’s duration. Any creature in the mud when it transforms must make a Dexterity saving throw. On a successful save, a creature is shunted safely to the surface in an unoccupied space. On a failed save, a creature becomes restrained by the rock. A restrained creature, or another creature within reach, can use an action to try to break the rock by succeeding on a DC 20 Strength check or by dealing damage to it. The rock has AC 15 and 25 hit points, and it is immune to poison and psychic damage.</p>",
+            "Description": "<p>You choose an area of stone or mud that you can see that fits within a 40-foot cube and is within range, and choose one of the following effects.</p><p>Transmute Rock to Mud</p><p> Nonmagical rock of any sort in the area becomes an equal volume of thick, flowing mud that remains for the spell’s duration.</p><p>The ground in the spell’s area becomes muddy enough that creatures can sink into it. Each foot that a creature moves through the mud costs 4 feet of movement, and any creature on the ground when you cast the spell must make a Strength saving throw. A creature must also make the saving throw when it moves into the area for the first time on a turn or ends its turn there. On a failed save, a creature sinks into the mud and is restrained, though it can use an action to end the restrained condition on itself by pulling itself free of the mud.</p><p>If you cast the spell on a ceiling, the mud falls. Any creature under the mud when it falls must make a Dexterity saving throw. A creature takes 4d8 bludgeoning damage on a failed save, or half as much damage on a successful one.</p><p>Transmute Mud to Rock</p><p> Nonmagical mud or quicksand in the area no more than 10 feet deep transforms into soft stone for the spell’s duration. Any creature in the mud when it transforms must make a Dexterity saving throw. On a successful save, a creature is shunted safely to the surface in an unoccupied space. On a failed save, a creature becomes restrained by the rock. A restrained creature, or another creature within reach, can use an action to try to break the rock by succeeding on a DC 20 Strength check or by dealing damage to it. The rock has AC 15 and 25 hit points, and it is immune to poison and psychic damage.</p>",
             "Duration": "Until dispelled",
             "Level": "5",
             "Range": "120 ft.",
@@ -284,7 +284,7 @@
                 "Wizard"
             ],
             "Components": "V, S, M (a tiny silver cage worth 100 gp)",
-            "Description": "<p>This spell snatches the soul of a humanoid as it dies and traps it inside the tiny cage you use for the material component. A stolen soul remains inside the cage until the spell ends or until you destroy the cage, which ends the spell. While you have a soul inside the cage, you can exploit it in any of the ways described below. You can use a trapped soul up to six times. Once you exploit a soul for the sixth time, it is released, and the spell ends. While a soul is trapped, the dead humanoid it came from can’t be revived.</p><p>**Steal Life.** You can use a bonus action to drain vigor from the soul and regain 2d8 hit points.</p><p>**Query Soul.** You ask the soul a question (no action required) and receive a brief telepathic answer, which you can understand regardless of the language used. The soul knows only what it knew in life, but it must answer you truthfully and to the best of its ability. The answer is no more than a sentence or two and might be cryptic.</p><p>**Borrow Experience.** You can use a bonus action to bolster yourself with the soul’s life experience, making your next attack roll, ability check, or saving throw with advantage. If you don’t use this benefit before the start of your next turn, it is lost.</p><p>**Eyes of the Dead.** You can use an action to name a place the humanoid saw in life, which creates an invisible sensor somewhere in that place if it is on the plane of existence you’re currently on. The sensor remains for as long as you concentrate, up to 10 minutes (as if you were concentrating on a spell). You receive visual and auditory information from the sensor as if you were in its space using your senses.</p><p>A creature that can see the sensor (such as one using see invisibility or truesight) sees a translucent image of the tormented humanoid whose soul you caged.</p>",
+            "Description": "<p>This spell snatches the soul of a humanoid as it dies and traps it inside the tiny cage you use for the material component. A stolen soul remains inside the cage until the spell ends or until you destroy the cage, which ends the spell. While you have a soul inside the cage, you can exploit it in any of the ways described below. You can use a trapped soul up to six times. Once you exploit a soul for the sixth time, it is released, and the spell ends. While a soul is trapped, the dead humanoid it came from can’t be revived.</p><p>Steal Life</p><p> You can use a bonus action to drain vigor from the soul and regain 2d8 hit points.</p><p>Query Soul</p><p> You ask the soul a question (no action required) and receive a brief telepathic answer, which you can understand regardless of the language used. The soul knows only what it knew in life, but it must answer you truthfully and to the best of its ability. The answer is no more than a sentence or two and might be cryptic.</p><p>Borrow Experience</p><p> You can use a bonus action to bolster yourself with the soul’s life experience, making your next attack roll, ability check, or saving throw with advantage. If you don’t use this benefit before the start of your next turn, it is lost.</p><p>Eyes of the Dead</p><p> You can use an action to name a place the humanoid saw in life, which creates an invisible sensor somewhere in that place if it is on the plane of existence you’re currently on. The sensor remains for as long as you concentrate, up to 10 minutes (as if you were concentrating on a spell). You receive visual and auditory information from the sensor as if you were in its space using your senses.</p><p>A creature that can see the sensor (such as one using see invisibility or truesight) sees a translucent image of the tormented humanoid whose soul you caged.</p>",
             "Duration": "8 hours",
             "Level": "6",
             "Range": "60 ft.",
@@ -655,7 +655,7 @@
                 "Druid"
             ],
             "Components": "V, S, M (mistletoe, which the spell consumes, that was harvested with a golden sickle under the light of a full moon)",
-            "Description": "<p>You invoke the spirits of nature to protect an area outdoors or underground. The area can be as small as a 30-foot cube or as large as a 90-foot cube. Buildings and other structures are excluded from the affected area. If you cast this spell in the same area every day for a year, the spell lasts until dispelled.</p><p>The spell creates the following effects within the area. When you cast this spell, you can specify creatures as friends who are immune to the effects. You can also specify a password that, when spoken aloud, makes the speaker immune to these effects.</p><p>The entire warded area radiates magic. A dispel magic cast on the area, if successful, removes only one of the following effects, not the entire area. That spell’s caster chooses which effect to end. Only when all its effects are gone is this spell dispelled.</p><p>**Solid Fog.** You can fill any number of 5-foot squares on the ground with thick fog, making them heavily obscured. The fog reaches 10 feet high. In addition, every foot of movement through the fog costs 2 extra feet. To a creature immune to this effect, the fog obscures nothing and looks like soft mist, with motes of green light floating in the air.</p><p>**Grasping Undergrowth.** You can fill any number of 5-foot squares on the ground that aren’t filled with fog with grasping weeds and vines, as if they were affected by an **entangle** spell. To a creature immune to this effect, the weeds and vines feel soft and reshape themselves to serve as temporary seats or beds.</p><p>**Grove Guardians.** You can animate up to four trees in the area, causing them to uproot themselves from the ground. These trees have the same statistics as an **awakened tree**, which appears in the Monster Manual, except they can’t speak, and their bark is covered with druidic symbols. If any creature not immune to this effect enters the warded area, the grove guardians fight until they have driven off or slain the intruders. The grove guardians also obey your spoken commands (no action required by you) that you issue while in the area. If you don’t give them commands and no intruders are present, the grove guardians do nothing. The grove guardians can’t leave the warded area. When the spell ends, the magic animating them disappears, and the trees take root again if possible.</p><p>**Additional Spell Effect.** You can place your choice of one of the following magical effects within the warded area:</p><p>•A constant **gust of wind** in two locations of your choice</p><p>•**Spike growth** in one location of your choice</p><p>•**Wind wall** in two locations of your choice</p><p>To a creature immune to this effect, the winds are a fragrant, gentle breeze, and the area of **spike growth** is harmless.</p>",
+            "Description": "<p>You invoke the spirits of nature to protect an area outdoors or underground. The area can be as small as a 30-foot cube or as large as a 90-foot cube. Buildings and other structures are excluded from the affected area. If you cast this spell in the same area every day for a year, the spell lasts until dispelled.</p><p>The spell creates the following effects within the area. When you cast this spell, you can specify creatures as friends who are immune to the effects. You can also specify a password that, when spoken aloud, makes the speaker immune to these effects.</p><p>The entire warded area radiates magic. A dispel magic cast on the area, if successful, removes only one of the following effects, not the entire area. That spell’s caster chooses which effect to end. Only when all its effects are gone is this spell dispelled.</p><p>Solid Fog</p><p> You can fill any number of 5-foot squares on the ground with thick fog, making them heavily obscured. The fog reaches 10 feet high. In addition, every foot of movement through the fog costs 2 extra feet. To a creature immune to this effect, the fog obscures nothing and looks like soft mist, with motes of green light floating in the air.</p><p>Grasping Undergrowth</p><p> You can fill any number of 5-foot squares on the ground that aren’t filled with fog with grasping weeds and vines, as if they were affected by an entangle spell. To a creature immune to this effect, the weeds and vines feel soft and reshape themselves to serve as temporary seats or beds.</p><p>Grove Guardians</p><p> You can animate up to four trees in the area, causing them to uproot themselves from the ground. These trees have the same statistics as an awakened tree, which appears in the Monster Manual, except they can’t speak, and their bark is covered with druidic symbols. If any creature not immune to this effect enters the warded area, the grove guardians fight until they have driven off or slain the intruders. The grove guardians also obey your spoken commands (no action required by you) that you issue while in the area. If you don’t give them commands and no intruders are present, the grove guardians do nothing. The grove guardians can’t leave the warded area. When the spell ends, the magic animating them disappears, and the trees take root again if possible.</p><p>Additional Spell Effect</p><p> You can place your choice of one of the following magical effects within the warded area:</p><p>•A constant gust of wind in two locations of your choice</p><p>•Spike growth in one location of your choice</p><p>•Wind wall in two locations of your choice</p><p>To a creature immune to this effect, the winds are a fragrant, gentle breeze, and the area of spike growth is harmless.</p>",
             "Duration": "24 hours",
             "Level": "6",
             "Range": "Touch",
@@ -876,76 +876,6 @@
             "School": "Necromancy"
         },
         {
-            "Id": "fqrms7ij",
-            "Version": "2.4.4",
-            "Name": "Tiny Servant",
-            "Path": "Xanathar's Guide to Everything",
-            "LastUpdateMs": 1558727148153,
-            "CurrentHP": 10,
-            "StatBlock": {
-                "Id": "fqrms7ij",
-                "Name": "Tiny Servant",
-                "Path": "Xanathar's Guide to Everything",
-                "Source": "Xanathar's Guide to Everything",
-                "Type": "Tiny Construct, unaligned",
-                "HP": {
-                    "Value": 10,
-                    "Notes": "(4d4)"
-                },
-                "AC": {
-                    "Value": 15,
-                    "Notes": "(natural armor)"
-                },
-                "InitiativeModifier": 0,
-                "InitiativeAdvantage": false,
-                "Speed": [],
-                "Abilities": {
-                    "Str": 4,
-                    "Dex": 16,
-                    "Con": 10,
-                    "Int": 2,
-                    "Wis": 10,
-                    "Cha": 1
-                },
-                "DamageVulnerabilities": [],
-                "DamageResistances": [],
-                "DamageImmunities": [
-                    "Poison",
-                    "Psychic"
-                ],
-                "ConditionImmunities": [
-                    "blinded",
-                    "charmed",
-                    "deafened",
-                    "exhaustion",
-                    "frightened",
-                    "paralyzed",
-                    "petrified",
-                    "poisoned"
-                ],
-                "Saves": [],
-                "Skills": [],
-                "Senses": [],
-                "Languages": [],
-                "Challenge": "",
-                "Traits": [],
-                "Actions": [
-                    {
-                        "Name": "Slam",
-                        "Content": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) bludgeoning damage.",
-                        "Usage": ""
-                    }
-                ],
-                "Reactions": [],
-                "LegendaryActions": [],
-                "Description": "<p>Part of the Tiny Servant spell</p>",
-                "Player": "",
-                "Version": "2.4.4",
-                "ImageURL": "https://static1.squarespace.com/static/534c20fae4b057a498df4d47/t/5a3b172d71c10b359f52abc7/1513822011541/Image+08+-+Tiny+Servant.png"
-            },
-            "Notes": ""
-        },
-        {
             "Id": "infvvqgu",
             "Version": "2.4.4",
             "Name": "Snilloc's Snowball Swarm",
@@ -1136,7 +1066,7 @@
                 "Wizard"
             ],
             "Components": "V, S, M (a vial of blood from a humanoid killed within the past 24 hours)",
-            "Description": "<p>You utter foul words, summoning demons from the chaos of the Abyss. Roll on the following table to determine what appears.</p><p>**d6**               **Demons Summoned**</p><p>1–2            Two demons of challenge rating 1 or lower</p><p>3–4            Four demons of challenge rating 1/2 or lower</p><p>5–6            Eight demons of challenge rating 1/4 or lower</p><p>The DM chooses the demons, such as manes or dretches, and you choose the unoccupied spaces you can see within range where they appear. A summoned demon disappears when it drops to 0 hit points or when the spell ends.</p><p>The demons are hostile to all creatures, including you. Roll initiative for the summoned demons as a group, which has its own turns. The demons pursue and attack the nearest non-demons to the best of their ability.</p><p>As part of casting the spell, you can form a circle on the ground with the blood used as a material component. The circle is large enough to encompass your space. While the spell lasts, the summoned demons can’t cross the circle or harm it, and they can’t target anyone within it. </p><p>Using the material component in this manner consumes it when the spell ends.</p><p>At Higher Levels</p><p> When you cast this spell using a spell slot of 6th or 7th level, you summon twice as many demons. If you cast it using a spell slot of 8th or 9th level, you summon three times as many demons.</p>",
+            "Description": "<p>You utter foul words, summoning demons from the chaos of the Abyss. Roll on the following table to determine what appears.</p><p>d6               Demons Summoned</p><p>1–2            Two demons of challenge rating 1 or lower</p><p>3–4            Four demons of challenge rating 1/2 or lower</p><p>5–6            Eight demons of challenge rating 1/4 or lower</p><p>The DM chooses the demons, such as manes or dretches, and you choose the unoccupied spaces you can see within range where they appear. A summoned demon disappears when it drops to 0 hit points or when the spell ends.</p><p>The demons are hostile to all creatures, including you. Roll initiative for the summoned demons as a group, which has its own turns. The demons pursue and attack the nearest non-demons to the best of their ability.</p><p>As part of casting the spell, you can form a circle on the ground with the blood used as a material component. The circle is large enough to encompass your space. While the spell lasts, the summoned demons can’t cross the circle or harm it, and they can’t target anyone within it. </p><p>Using the material component in this manner consumes it when the spell ends.</p><p>At Higher Levels</p><p> When you cast this spell using a spell slot of 6th or 7th level, you summon twice as many demons. If you cast it using a spell slot of 8th or 9th level, you summon three times as many demons.</p>",
             "Duration": "Concentration, up to 1 hour",
             "Level": "3",
             "Range": "60 ft.",
@@ -1236,7 +1166,7 @@
                 "Wizard"
             ],
             "Components": "V, S",
-            "Description": "<p>You touch one Tiny, nonmagical object that isn’t attached to another object or a surface and isn’t being carried by another creature. The target animates and sprouts little arms and legs, becoming a creature under your control until the spell ends or the creature drops to 0 hit points. See the **Tiny Servant** stat block for its statistics.</p><p>As a bonus action, you can mentally command the creature if it is within 120 feet of you. (If you control multiple creatures with this spell, you can command any or all of them at the same time, issuing the same command to each one.) You decide what action the creature will take and where it will move during its next turn, or you can issue a simple, general command, such as to fetch a key, stand watch, or stack some books. If you issue no commands, the servant does nothing other than defend itself against hostile creatures. Once given an order, the servant continues to follow that order until its task is complete.</p><p>When the creature drops to 0 hit points, it reverts to its original form, and any remaining damage carries over to that form.</p><p>At Higher Levels</p><p> When you cast this spell using a spell slot of 4th level or higher, you can animate two additional objects for each slot level above 3rd.</p>",
+            "Description": "<p>You touch one Tiny, nonmagical object that isn’t attached to another object or a surface and isn’t being carried by another creature. The target animates and sprouts little arms and legs, becoming a creature under your control until the spell ends or the creature drops to 0 hit points. See the Tiny Servant stat block for its statistics.</p><p>As a bonus action, you can mentally command the creature if it is within 120 feet of you. (If you control multiple creatures with this spell, you can command any or all of them at the same time, issuing the same command to each one.) You decide what action the creature will take and where it will move during its next turn, or you can issue a simple, general command, such as to fetch a key, stand watch, or stack some books. If you issue no commands, the servant does nothing other than defend itself against hostile creatures. Once given an order, the servant continues to follow that order until its task is complete.</p><p>When the creature drops to 0 hit points, it reverts to its original form, and any remaining damage carries over to that form.</p><h4>Tiny Servant</h4><p><i>Tiny construct, unaligned</i></p><ul><li>AC: 15</li><li>HP: 10 (4d4)</li><li>STR: 4 (-3)</li><li>DEX: 16 (+3)</li><li>CON: 10 (+0)</li><li>INT: 2 (-4)</li><li>WIS: 10 (+0)</li><li>CHA: 1 (-5)</li><li>Damage immunities: poison, psychic</li><li>Condition immunities: blinded, charmed, deafened, exhaustion, frightenedd, paralyzed, petrified, poisoned</li><li>Senses: blindsight 60ft (blind beyond that radius), passive perception: 10</li><li>Languages: --</li></ul><p>Actions</p><p>Slam: Melee weapon attack, +5 to hit, reach 5 ft, on target. On hit: 1d4 + 3 bludgeoning damage</p><p>At Higher Levels</p><p> When you cast this spell using a spell slot of 4th level or higher, you can animate two additional objects for each slot level above 3rd.</p>",
             "Duration": "8 hours",
             "Level": "3",
             "Range": "Touch",
@@ -1260,67 +1190,6 @@
             "Range": "5 ft.",
             "Ritual": false,
             "School": "Evocation"
-        },
-        {
-            "Id": "22a2y5ed",
-            "Name": "Tiny Servant",
-            "Path": "",
-            "Source": "Xanathar's Guide to Everything",
-            "Type": "Tiny Construct, unaligned",
-            "HP": {
-                "Value": 10,
-                "Notes": "(4d4)"
-            },
-            "AC": {
-                "Value": 15,
-                "Notes": "(natural armor)"
-            },
-            "InitiativeModifier": 0,
-            "InitiativeAdvantage": false,
-            "Speed": [],
-            "Abilities": {
-                "Str": 4,
-                "Dex": 16,
-                "Con": 10,
-                "Int": 2,
-                "Wis": 10,
-                "Cha": 1
-            },
-            "DamageVulnerabilities": [],
-            "DamageResistances": [],
-            "DamageImmunities": [
-                "Poison",
-                "Psychic"
-            ],
-            "ConditionImmunities": [
-                "blinded",
-                "charmed",
-                "deafened",
-                "exhaustion",
-                "frightened",
-                "paralyzed",
-                "petrified",
-                "poisoned"
-            ],
-            "Saves": [],
-            "Skills": [],
-            "Senses": [],
-            "Languages": [],
-            "Challenge": "",
-            "Traits": [],
-            "Actions": [
-                {
-                    "Name": "Slam",
-                    "Content": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) bludgeoning damage.",
-                    "Usage": ""
-                }
-            ],
-            "Reactions": [],
-            "LegendaryActions": [],
-            "Description": "<p>Part of the Tiny Servant spell</p>",
-            "Player": "",
-            "Version": "2.4.4",
-            "ImageURL": "https://static1.squarespace.com/static/534c20fae4b057a498df4d47/t/5a3b172d71c10b359f52abc7/1513822011541/Image+08+-+Tiny+Servant.png"
         },
         {
             "Id": "3ar4fsbe",
@@ -1429,7 +1298,7 @@
                 "Wizard"
             ],
             "Components": "V, S",
-            "Description": "<p>You take control of the air in a 100-foot cube that you can see within range. Choose one of the following effects when you cast the spell. The effect lasts for the spell’s duration, unless you use your action on a later turn to switch to a different effect. You can also use your action to temporarily halt the effect or to restart one you’ve halted.</p><p>**Gusts.** A wind picks up within the cube, continually blowing in a horizontal direction you designate. You choose the intensity of the wind: calm, moderate, or strong. If the wind is moderate or strong, ranged weapon attacks that enter or leave the cube or pass through it have disadvantage on their attack rolls. If the wind is strong, any creature moving against the wind must spend 1 extra foot of movement for each foot moved.</p><p>**Downdraft.** You cause a sustained blast of strong wind to blow downward from the top of the cube. Ranged weapon attacks that pass through the cube or that are made against targets within it have disadvantage on their attack rolls. A creature must make a Strength saving throw if it flies into the cube for the first time on a turn or starts its turn there flying. On a failed save, the creature is knocked prone.</p><p>**Updraft.** You cause a sustained updraft within the cube, rising upward from the cube’s bottom side. Creatures that end a fall within the cube take only half damage from the fall. When a creature in the cube makes a vertical jump, the creature can jump up to 10 feet higher than normal.</p>",
+            "Description": "<p>You take control of the air in a 100-foot cube that you can see within range. Choose one of the following effects when you cast the spell. The effect lasts for the spell’s duration, unless you use your action on a later turn to switch to a different effect. You can also use your action to temporarily halt the effect or to restart one you’ve halted.</p><p>Gusts</p><p> A wind picks up within the cube, continually blowing in a horizontal direction you designate. You choose the intensity of the wind: calm, moderate, or strong. If the wind is moderate or strong, ranged weapon attacks that enter or leave the cube or pass through it have disadvantage on their attack rolls. If the wind is strong, any creature moving against the wind must spend 1 extra foot of movement for each foot moved.</p><p>Downdraft</p><p> You cause a sustained blast of strong wind to blow downward from the top of the cube. Ranged weapon attacks that pass through the cube or that are made against targets within it have disadvantage on their attack rolls. A creature must make a Strength saving throw if it flies into the cube for the first time on a turn or starts its turn there flying. On a failed save, the creature is knocked prone.</p><p>Updraft</p><p> You cause a sustained updraft within the cube, rising upward from the cube’s bottom side. Creatures that end a fall within the cube take only half damage from the fall. When a creature in the cube makes a vertical jump, the creature can jump up to 10 feet higher than normal.</p>",
             "Duration": "Concentration, up to 1 hour",
             "Level": "5",
             "Range": "300 ft.",
@@ -1601,7 +1470,7 @@
                 "Ranger"
             ],
             "Components": "V",
-            "Description": "<p>**Primal Beast.** Bestial fur covers your body, your facial features become feral, and you gain the following benefits:</p><p>•Your walking speed increases by 10 feet.</p><p>•You gain darkvision with a range of 120 feet.</p><p>•You make Strength-based attack rolls with advantage.</p><p>•Your melee weapon attacks deal an extra 1d6 force damage on a hit.</p><p>**Great Tree.** Your skin appears barky, leaves sprout from your hair, and you gain the following benefits:</p><p>•You gain 10 temporary hit points.</p><p>•You make Constitution saving throws with advantage.</p><p>•You make Dexterity- and Wisdom-based attack rolls with advantage.</p><p>•While you are on the ground, the ground within 15 feet of you is difficult terrain for your enemies.</p>",
+            "Description": "<p>Primal Beast</p><p> Bestial fur covers your body, your facial features become feral, and you gain the following benefits:</p><p>•Your walking speed increases by 10 feet.</p><p>•You gain darkvision with a range of 120 feet.</p><p>•You make Strength-based attack rolls with advantage.</p><p>•Your melee weapon attacks deal an extra 1d6 force damage on a hit.</p><p>Great Tree</p><p> Your skin appears barky, leaves sprout from your hair, and you gain the following benefits:</p><p>•You gain 10 temporary hit points.</p><p>•You make Constitution saving throws with advantage.</p><p>•You make Dexterity- and Wisdom-based attack rolls with advantage.</p><p>•While you are on the ground, the ground within 15 feet of you is difficult terrain for your enemies.</p>",
             "Duration": "Concentration, up to 1 minute",
             "Level": "4",
             "Range": "Self",

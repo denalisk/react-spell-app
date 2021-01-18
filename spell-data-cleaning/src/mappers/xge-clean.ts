@@ -26,7 +26,13 @@ export class XGEMapper implements ISpellMapper<XGESpell> {
     }
 
     private mapComponent = (componentString: string): string[] => {
-        const components = componentString.split('(');
+        if (!componentString) {
+            console.log(`unable to read component string for spell`);
+            return ['ERROR', 'ERROR']
+        }
+
+
+        const components = componentString.split(' (');
         if (components.length === 2) {
             components[1].replace(')', '');
         }
@@ -35,6 +41,11 @@ export class XGEMapper implements ISpellMapper<XGESpell> {
     }
 
     private mapDescription = (description: string): string[] => {
+        if (!description) {
+            console.log(`unable to read description string for spell`);
+            return ['ERROR', 'ERROR']
+        }
+
         return description.split('<p>At Higher Levels.</p>');
     }
 
@@ -43,6 +54,11 @@ export class XGEMapper implements ISpellMapper<XGESpell> {
      * @param duration tuple of the duration, [durationString, concentrationYesNo]
      */
     private mapDuration = (duration: string): string[] => {
+        if (!duration) {
+            console.log(`unable to read duration string for spell`);
+            return ['ERROR', 'ERROR']
+        }
+
         const durations = duration.split(', ');
         const mappedDurations = []
         if (durations.length === 2) {

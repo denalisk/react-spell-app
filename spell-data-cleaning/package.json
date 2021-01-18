@@ -11,7 +11,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "map-xge": "node .\\build\\spell-data-cleaning\\map-xge.js",
+    "aggregate": "node .\\build\\spell-data-cleaning\\aggregate-and-save.js"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-import { xGEFileConfig } from "../config/xge.config";
+import { xGEFileConfig } from "../config/spell-files.config";
 import { XGEMapper } from "../mappers/xge-clean";
 import ISpellData from "../models/spell-data.interface";
 import XGESpell from "../models/xge-spell.interface";
