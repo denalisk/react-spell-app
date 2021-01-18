@@ -10,14 +10,15 @@ import { basicHash } from "./utils/basic-hash";
  * @param duplicateSpell The duplicate
  */
 function dedupeSpells(currentSpell: Spell, duplicateSpell: Spell): Spell {
-    // Merge the classes\
+    // Merge the classes
     currentSpell.class = currentSpell.class.concat(duplicateSpell.class.filter(x => !currentSpell.class.includes(x)));
+
     // merge the archetypes
-    if (currentSpell.archetype) {
-        if (duplicateSpell.archetype) {
-            currentSpell.archetype = currentSpell.archetype.concat(duplicateSpell.archetype.filter(x => !currentSpell.archetype.includes(x)));
-        }
-    } else {
+    if (currentSpell.archetype && duplicateSpell.archetype) {
+        // The non-null assertion operator (...currentSpell.archtype! <-- is used here because the linter
+        // can't figure out what's going on)
+        currentSpell.archetype = currentSpell.archetype.concat(duplicateSpell.archetype.filter(x => !currentSpell.archetype!.includes(x)));
+    } else if (duplicateSpell.archetype) {
         currentSpell.archetype = duplicateSpell.archetype;
     }
 
