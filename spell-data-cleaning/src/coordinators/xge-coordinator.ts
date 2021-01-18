@@ -10,16 +10,16 @@ interface IXGEPreSpellData {
 
 export default async function runXGEMapper() {
     const config = xGEFileConfig;
-    const fileService = new FileService(xGEFileConfig);
+    const fileService = new FileService();
     const mapper = new XGEMapper();
 
-    const readData = await fileService.read<IXGEPreSpellData>();
+    const readData = await fileService.read<IXGEPreSpellData>(xGEFileConfig.sourceFileName);
 
     const mappedSpells = readData.spells.map((preSpell) => mapper.map(preSpell));
 
     const toSaveData: ISpellData = { spells: mappedSpells };
 
-    await fileService.save(toSaveData);
+    await fileService.save(xGEFileConfig.destinationFileName, toSaveData);
 
     console.log('Completed');
 }
