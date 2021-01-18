@@ -1,19 +1,15 @@
 import { tCOEFileConfig } from "../config/spell-files.config";
-import { XGEMapper } from "../mappers/xge-clean";
+import { TCOEMapper } from "../mappers/tcoe-clean";
+import IPreSpell1Data from "../models/pre-spell-data.interface";
 import ISpellData from "../models/spell-data.interface";
-import XGESpell from "../models/xge-spell.interface";
 import { FileService } from "../services/file.service";
-
-interface IXGEPreSpellData {
-    spells: XGESpell[];
-}
 
 export default async function runTCOEMapper() {
     const config = tCOEFileConfig;
     const fileService = new FileService();
-    const mapper = new XGEMapper();
+    const mapper = new TCOEMapper();
 
-    const readData = await fileService.read<IXGEPreSpellData>(config.sourceFileName);
+    const readData = await fileService.read<IPreSpell1Data>(config.sourceFileName);
 
     const mappedSpells = readData.spells.map((preSpell) => mapper.map(preSpell));
 
@@ -21,5 +17,5 @@ export default async function runTCOEMapper() {
 
     await fileService.save(config.destinationFileName, toSaveData);
 
-    console.log('Completed');
+    console.log('Completed mapping TCOE spells');
 }

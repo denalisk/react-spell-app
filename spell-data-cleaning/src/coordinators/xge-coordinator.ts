@@ -1,19 +1,15 @@
 import { xGEFileConfig } from "../config/spell-files.config";
 import { XGEMapper } from "../mappers/xge-clean";
+import IPreSpell1Data from "../models/pre-spell-data.interface";
 import ISpellData from "../models/spell-data.interface";
-import XGESpell from "../models/xge-spell.interface";
 import { FileService } from "../services/file.service";
-
-interface IXGEPreSpellData {
-    spells: XGESpell[];
-}
 
 export default async function runXGEMapper() {
     const config = xGEFileConfig;
     const fileService = new FileService();
     const mapper = new XGEMapper();
 
-    const readData = await fileService.read<IXGEPreSpellData>(config.sourceFileName);
+    const readData = await fileService.read<IPreSpell1Data>(config.sourceFileName);
 
     const mappedSpells = readData.spells.map((preSpell) => mapper.map(preSpell));
 
