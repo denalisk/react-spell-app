@@ -11,6 +11,7 @@ import { basicHash } from "./utils/basic-hash";
  */
 function dedupeSpells(currentSpell: Spell, duplicateSpell: Spell): Spell {
     // Merge the classes
+    // console.log(`merging duplicates for ${JSON.stringify(currentSpell)} and ${JSON.stringify(duplicateSpell)}`);
     currentSpell.class = currentSpell.class.concat(duplicateSpell.class.filter(x => !currentSpell.class.includes(x)));
 
     // merge the archetypes
@@ -59,13 +60,14 @@ export default async function aggregateSpells() {
 
         // If the id exists in the hashmap, we already have this spell
         if (hashmap[id]) {
+            console.log(`Found a duplicate for spell ${current.name}: ${hashmap[id]}, hashed id is ${id}. Resolving...`);
             aggregate[hashmap[id]] = dedupeSpells(aggregate[hashmap[id]], current);
             return aggregate;
         }
 
-        hashmap[id] = i;
         current.id = id;
         aggregate.push(current);
+        hashmap[id] = aggregate.length - 1;
         return aggregate;
     }, []);
 
